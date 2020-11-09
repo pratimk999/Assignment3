@@ -76,8 +76,13 @@ module.exports = {
             const id = Number(req.params.id);
             const blogs = await readFile(dbFilePath);
 
+            let flag = 0;
+
             blogs = blogs.filter(function(blog){
-                return blog.id !== id;
+                if(blog.id === id){
+                    flag = 1;
+                    return blog.id !== id;
+                } 
             }) 
 
 
